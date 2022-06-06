@@ -1,7 +1,6 @@
 import 'dotenv/config'
 
-import Controller from './controller/Controller.js';
-import Controller from './controller/Controller.js';
+import petController from './controller/petController.js';
 
 import express from 'express'
 import cors from 'cors'
@@ -12,9 +11,7 @@ server.use(express.json());;
 
 
 //configuração dos endpoints
-server.use(Controller);
-server.use(Controller);
-
+server.use(petController);
 
 
 

@@ -1,7 +1,39 @@
-import { inserirPet } from "../repository/petRepository";
+import { inserirPet, listarPets } from '../repository/petRepository.js';
 
-server.post('cadastrar/pet',(req,resp) => {
-    const pet = req.body;
+import { Router }  from 'express'
+const server = Router();
 
-    const x = 
+server.post('/cadastrar/pet', async (req,resp) => {
+   try {
+    const novoPet = req.body;
+
+         if(!novoPet.nome)
+            throw new error('Nome do pet é obrigatório!')
+
+            const petInserido = await inserirPet(novoPet);
+
+            resp.send(petInserido);
+
+
+   } catch (err) {
+      resp.status(400).send({
+         erro: err.message 
+      })
+   }
 })
+
+server.get('/pet', async (req,resp) => {
+   try {
+       const resposta = await listarPets();
+       resp.send(resposta);
+       
+   } catch (err) {
+       resp.status(400).send({
+           erro: err.message
+       })
+   }
+})
+
+export default server;
+    
+      
