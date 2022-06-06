@@ -26,7 +26,7 @@ server.get('/pet', async (req,resp) => {
    try {
        const resposta = await listarPets();
        resp.send(resposta);
-       
+
    } catch (err) {
        resp.status(400).send({
            erro: err.message

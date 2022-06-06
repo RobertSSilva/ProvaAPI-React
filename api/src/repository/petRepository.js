@@ -3,13 +3,12 @@ import {con} from './connection.js'
 
 export async function inserirPet(pet){
     const comando =
-    `INSERT INTO TB_PET(nm_pet)
-    VALUES ( ? )`
+    `INSERT INTO tb_pet (nm_pet)
+        VALUES ( ? )`
 
-    const [respostas] = await con.query(comando[pet.nome])
-    pet.id= respostas.insertId;
-
-    return pet;
+    const [respostas] = await con.query(comando,[pet.nome])
+    
+    return respostas[0];
 }
 
 export async function listarPets(){
