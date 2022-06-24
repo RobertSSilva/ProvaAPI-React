@@ -3,7 +3,7 @@ import { inserirPet, listarPets } from '../repository/petRepository.js';
 import { Router }  from 'express'
 const server = Router();
 
-server.post('/cadastrar/pet', async (req,resp) => {
+server.post('/pet', async (req,resp) => {
    try {
     const novoPet = req.body;
 
