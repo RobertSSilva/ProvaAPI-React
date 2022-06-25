@@ -7,8 +7,10 @@ export async function inserirPet(pet){
         VALUES ( ? )`
 
     const [respostas] = await con.query(comando,[pet.nome])
+    pet.id = respostas.insertId;
+    return pet;
     
-    return respostas[0];
+    
 }
 
 export async function listarPets(){
